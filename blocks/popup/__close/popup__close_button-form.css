@@ -1,17 +1,14 @@
 .popup__close_button-form {
     width: 32px;
     height: 32px;
-    position: absolute;
-    left: 438px;
-    top:-40px;
+    
 }
 
 @media screen and (max-width:767px) {
     .popup__close_button-form {
         width: 20px;
         height: 20px;
-        left: 262px;
-        top:-36px;
+        
     }
 
 }
