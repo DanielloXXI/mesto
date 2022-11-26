@@ -1,4 +1,4 @@
-.profile__edit_button {
+.profile__edit-button {
     margin: 38px 0 0 0;
     padding: 0;
     background: url(../../../images/Edit_Button.png);
@@ -8,13 +8,13 @@
     cursor: pointer;
 }
 
-.profile__edit_button:hover {
+.profile__edit-button:hover {
     opacity: 0.6;
     transition: 0.4s;
 }
 
 @media screen and (max-width:767px) {
-    .profile__edit_button {
+    .profile__edit-button {
         margin: 8px 0 0 0;
         width: 18px;
         height: 18px;
