@@ -4,7 +4,6 @@
 @import url(../blocks/popup/popup.css);
 @import url(../blocks/popup/__container-form/popup__container-form.css);
 @import url(../blocks/popup/__close-button/popup__close-button.css);
-@import url(../blocks/popup/__container/_form/popup__container_form.css);
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__fieldset/popup__fieldset.css);
