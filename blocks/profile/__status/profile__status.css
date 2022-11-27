@@ -24,7 +24,8 @@
     .profile__status {
         font-size: 14px;
         line-height: 17px;
-        max-width:240px;
+        max-width:200px;
+        margin: 0 0 0 62px;
     }
 
 }
