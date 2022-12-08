@@ -28,48 +28,7 @@
             <button class="profile__add-button" type="button"></button>
         </section>
         <section class="elements">
-            <div class="element">
-                <img src="./images/kirill-pershin.jpg" alt="Карачаевск" class="element__image">
-                <div class="element__description">
-                    <h2 class="element__name">Карачаевск</h2>
-                    <button class="element__like" type="button"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img src="./images/Elbrus.jpg" alt="Ельбрус" class="element__image">
-                <div class="element__description">
-                    <h2 class="element__name">Гора Эльбрус</h2>
-                    <button class="element__like" type="button"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img src="./images/dombai.jpg" alt="Домбай" class="element__image">
-                <div class="element__description">
-                    <h2 class="element__name">Домбай</h2>
-                    <button class="element__like" type="button"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img src="./images/Don.jpg" alt="Дон" class="element__image">
-                <div class="element__description">
-                    <h2 class="element__name">Река Дон</h2>
-                    <button class="element__like" type="button"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img src="./images/novgorod_nizhniy.jpg" alt="Нижний новгород" class="element__image">
-                <div class="element__description">
-                    <h2 class="element__name">Нижний Новгород</h2>
-                    <button class="element__like" type="button"></button>
-                </div>
-            </div>
-            <div class="element">
-                <img src="./images/vladivostok.jpg" alt="Владивосток" class="element__image">
-                <div class="element__description">
-                    <h2 class="element__name">Владивосток</h2>
-                    <button class="element__like" type="button"></button>
-                </div>
-            </div>
+            
         </section>
     </main>
     <footer class="footer">
@@ -82,7 +41,7 @@
             <form class="popup__form popup__add_form" name="popup__add_form">
                 <fieldset class="popup__fieldset">
                     <input type="text" name="title" class="popup__input popup__input_title" placeholder="Название">
-                    <input type="text" name="link" class="popup__input popup__input_link"
+                    <input type="url" name="link" class="popup__input popup__input_link"
                         placeholder="Ссылка на картинку">
                     <button type="submit" class="popup__submit-button">Создать</button>
                 </fieldset>
@@ -91,7 +50,7 @@
     </section>
     <section class="popup popup__edit">
         <div class="popup__container">
-            <button type="button" class="popup__close-button"></button>
+            <button type="button" class="popup__close-button popup__edit_close-button"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
             <form class="popup__form popup__edit_form" name="popup__edit_form">
                 <fieldset class="popup__fieldset">
@@ -102,6 +61,15 @@
             </form>
         </div>
     </section>
+    <template id="element">
+        <div class="element">
+            <img class="element__image">
+            <div class="element__description">
+                <h2 class="element__name"></h2>
+                <button class="element__like" type="button"></button>
+            </div>
+        </div>
+    </template>
     <script src="./scripts/script.js"></script>
 </body>
 
