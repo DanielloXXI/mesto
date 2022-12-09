@@ -1,4 +1,4 @@
-.popup__add {
+.popup {
     position: fixed;
     top: 0;
     left: 0;
@@ -12,7 +12,7 @@
     transition: visibility 0s, opacity 0.5s linear;
 }
 
-.popup__add::before {
+.popup::before {
     content: '';
     position: absolute;
     top: 0;

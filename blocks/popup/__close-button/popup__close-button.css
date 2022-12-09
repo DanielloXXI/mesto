@@ -6,7 +6,7 @@
     border: 0;
     cursor: pointer;
     position: absolute;
-    left: 438px;
+    right:-40px;
     top:-40px;
 }
 
@@ -20,7 +20,7 @@
         width: 20px;
         height: 20px;
         background-size: cover;
-        left: 262px;
+        right:-0;
         top:-36px;
     }
 

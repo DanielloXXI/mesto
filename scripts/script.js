@@ -4,8 +4,8 @@ let profileText = document.querySelector(".profile__text");
 let profileName = profileText.querySelector(".profile__name");
 let profileStatus = profileText.querySelector(".profile__status");
 let popupEditCloseButton = popupEdit.querySelector(".popup__edit_close-button");
-let popupName = document.querySelector(".popup__input_name");
-let popupDescription = popupEdit.querySelector(".popup__input_description");
+let popupName = document.querySelector(".popup__edit__input_name");
+let popupDescription = popupEdit.querySelector(".popup__edit__input_description");
 let popupEditForm = popupEdit.querySelector(".popup__edit_form");
 let popupAdd = document.querySelector(".popup__add");
 let popupAddButton = document.querySelector(".profile__add-button");
@@ -15,6 +15,10 @@ let elementTemplate = document.querySelector("#element").content;
 let elements = document.querySelector(".elements");
 let popupInputTitle = document.querySelector(".popup__input_title");
 let popupInputLink = document.querySelector(".popup__input_link");
+let popupPhoto = document.querySelector(".popup__photo");
+let popupPhotoCloseButton = document.querySelector(".popup__photo_close-button");
+let popupPhotoImage = document.querySelector(".popup__photo_image");
+let popupPhotoTitle = document.querySelector(".popup__photo_title");
 
 const initialCards = [
     {
@@ -42,6 +46,10 @@ const initialCards = [
         link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
     }
 ];
+function showPopupPhoto() {
+    popupPhoto.classList.add("popup_opened");
+}
+
 
 initialCards.forEach(function (cards) {
     const element = elementTemplate.cloneNode(true);
@@ -50,6 +58,14 @@ initialCards.forEach(function (cards) {
     element.querySelector(".element__image").alt = `фото: ${cards.name}`;
     element.querySelector(".element__like").addEventListener("click", function (evt) {
         evt.target.classList.toggle("element__like_active");
+    })
+    element.querySelector(".element__delete").addEventListener("click", function (evt) {
+        evt.target.parentElement.remove();
+    })
+    element.querySelector(".element__image").addEventListener("click", function (evt) {
+        showPopupPhoto();
+        popupPhotoImage.src= evt.target.src;
+        popupPhotoTitle.textContent = cards.name;
     })
     elements.append(element);
 })
@@ -73,11 +89,20 @@ function handleFormEditSubmit(evt) {
 
 function showPopupAdd() {
     popupAdd.classList.add("popup_opened");
+    popupInputLink.value = null;
+    popupInputTitle.value = null;
 }
 
 function closePopupAdd() {
     popupAdd.classList.remove("popup_opened");
 }
+
+
+function closePopupPhoto() {
+    popupPhoto.classList.remove("popup_opened");
+}
+
+
 
 function ElementAdd() {
     const element = elementTemplate.querySelector(".element").cloneNode(true);
@@ -86,6 +111,14 @@ function ElementAdd() {
     element.querySelector(".element__image").alt = `фото: ${popupInputTitle.value}`;
     element.querySelector(".element__like").addEventListener("click", function (evt) {
         evt.target.classList.toggle("element__like_active");
+    })
+    element.querySelector(".element__delete").addEventListener("click", function (evt) {
+        evt.target.parentElement.remove();
+    })
+    element.querySelector(".element__image").addEventListener("click", function (evt) {
+        showPopupPhoto();
+        popupPhotoImage.src= evt.target.src;
+        popupPhotoTitle.textContent = element.querySelector(".element__name").textContent;
     })
     elements.prepend(element);
 }
@@ -96,9 +129,11 @@ function handleFormAddSubmit(evt) {
     closePopupAdd();
 }
 
+
 popupEditCloseButton.addEventListener("click", closePopupEdit);
 profileEditButton.addEventListener("click", showPopupEdit);
 popupEditForm.addEventListener('submit', handleFormEditSubmit);
 popupAddButton.addEventListener("click", showPopupAdd);
 popupAddCloseButton.addEventListener("click", closePopupAdd);
 popupAddForm.addEventListener('submit', handleFormAddSubmit);
+popupPhotoCloseButton.addEventListener("click", closePopupPhoto);
