@@ -1,11 +1,11 @@
-.popup__edit__input_description {
+.popup__input_edit_name {
+    border:0;
     width:358px;
     height:27px;
-    border:0;
 }
 
 @media screen and (max-width:767px) {
-    .popup__edit__input_description {
+    .popup__input_edit_name {
         width:238px;
     }
 

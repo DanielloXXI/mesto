@@ -1,12 +1,12 @@
-let popupEdit = document.querySelector(".popup__edit");
+let popupEdit = document.querySelector(".popup_edit");
 let profileEditButton = document.querySelector(".profile__edit-button");
 let profileText = document.querySelector(".profile__text");
 let profileName = profileText.querySelector(".profile__name");
 let profileStatus = profileText.querySelector(".profile__status");
-let popupEditCloseButton = popupEdit.querySelector(".popup__edit_close-button");
-let popupName = document.querySelector(".popup__edit__input_name");
-let popupDescription = popupEdit.querySelector(".popup__edit__input_description");
-let popupEditForm = popupEdit.querySelector(".popup__edit_form");
+let popupEditCloseButton = popupEdit.querySelector(".popup__close-button_edit");
+let popupName = document.querySelector(".popup__input_edit_name");
+let popupDescription = popupEdit.querySelector(".popup__input_edit_description");
+let popupEditForm = popupEdit.querySelector(".popup__form_edit");
 let popupAdd = document.querySelector(".popup_add");
 let popupAddButton = document.querySelector(".profile__add-button");
 let popupAddCloseButton = document.querySelector(".popup__close-button_add");
@@ -15,10 +15,10 @@ let elementTemplate = document.querySelector("#element").content;
 let elements = document.querySelector(".elements");
 let popupInputTitle = document.querySelector(".popup__input_title");
 let popupInputLink = document.querySelector(".popup__input_link");
-let popupPhoto = document.querySelector(".popup__photo");
-let popupPhotoCloseButton = document.querySelector(".popup__photo_close-button");
-let popupPhotoImage = document.querySelector(".popup__photo__image");
-let popupPhotoTitle = document.querySelector(".popup__photo__title");
+let popupPhoto = document.querySelector(".popup_photo");
+let popupPhotoCloseButton = document.querySelector(".popup__close-button_photo");
+let popupPhotoImage = document.querySelector(".popup__image_photo ");
+let popupPhotoTitle = document.querySelector(".popup__title_photo");
 
 const initialCards = [
     {

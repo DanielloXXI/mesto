@@ -1,0 +1,12 @@
+.popup__input_edit_description {
+    width: 358px;
+    height: 27px;
+    border: 0;
+}
+
+@media screen and (max-width:767px) {
+    .popup__input_edit_description {
+        width: 238px;
+    }
+
+}
