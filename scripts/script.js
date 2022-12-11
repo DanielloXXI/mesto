@@ -13,12 +13,13 @@ const popupAddCloseButton = document.querySelector(".popup__close-button_add");
 const popupAddForm = document.querySelector(".popup__form_add");
 const elementTemplate = document.querySelector("#element").content;
 const elements = document.querySelector(".elements");
-const popupInputTitle = document.querySelector(".popup__input_title");
-const popupInputLink = document.querySelector(".popup__input_link");
+let popupInputTitle = document.querySelector(".popup__input_title");
+let popupInputLink = document.querySelector(".popup__input_link");
 const popupPhoto = document.querySelector(".popup_photo");
 const popupPhotoCloseButton = document.querySelector(".popup__close-button_photo");
 const popupPhotoImage = document.querySelector(".popup__image");
 const popupPhotoTitle = document.querySelector(".popup__text");
+
 
 const initialCards = [
     {
@@ -74,51 +75,36 @@ function handleFormEditSubmit(evt) {
     closePopup(popupEdit);
 }
 
+function createCard(link, title) {
+    const element = elementTemplate.querySelector(".element").cloneNode(true);
+    element.querySelector(".element__name").textContent = title;
+    element.querySelector(".element__image").src = link;
+    element.querySelector(".element__image").alt = `фото: ${title}`;
+    element.querySelector(".element__like").addEventListener("click", function (evt) {
+        evt.target.classList.toggle("element__like_active");
+    })
+    element.querySelector(".element__delete").addEventListener("click", function (evt) {
+        evt.target.parentElement.remove();
+    })
+    element.querySelector(".element__image").addEventListener("click", function (evt) {
+        showPopup(popupPhoto);
+        popupPhotoImage.src = evt.target.src;
+        popupPhotoImage.alt = evt.target.alt;
+        popupPhotoTitle.textContent = title;
+    })
+    return element;
+}
 
 initialCards.forEach(function (cards) {
-    const element = elementTemplate.cloneNode(true);
-    element.querySelector(".element__name").textContent = cards.name;
-    element.querySelector(".element__image").src = cards.link;
-    element.querySelector(".element__image").alt = `фото: ${cards.name}`;
-    element.querySelector(".element__like").addEventListener("click", function (evt) {
-        evt.target.classList.toggle("element__like_active");
-    })
-    element.querySelector(".element__delete").addEventListener("click", function (evt) {
-        evt.target.parentElement.remove();
-    })
-    element.querySelector(".element__image").addEventListener("click", function (evt) {
-        showPopup(popupPhoto);
-        popupPhotoImage.src= evt.target.src;
-        popupPhotoImage.alt = evt.target.alt;
-        popupPhotoTitle.textContent = cards.name;
-    })
-    elements.append(element);
+    elements.append(createCard(cards.link, cards.name));
 })
-
-function ElementAdd() {
-    const element = elementTemplate.querySelector(".element").cloneNode(true);
-    element.querySelector(".element__name").textContent = popupInputTitle.value;
-    element.querySelector(".element__image").src = popupInputLink.value;
-    element.querySelector(".element__image").alt = `фото: ${popupInputTitle.value}`;
-    element.querySelector(".element__like").addEventListener("click", function (evt) {
-        evt.target.classList.toggle("element__like_active");
-    })
-    element.querySelector(".element__delete").addEventListener("click", function (evt) {
-        evt.target.parentElement.remove();
-    })
-    element.querySelector(".element__image").addEventListener("click", function (evt) {
-        showPopup(popupPhoto);
-        popupPhotoImage.src= evt.target.src;
-        popupPhotoImage.alt = evt.target.alt;
-        popupPhotoTitle.textContent = element.querySelector(".element__name").textContent;
-    })
-    elements.prepend(element);
-}
 
 
 function handleFormAddSubmit(evt) {
     evt.preventDefault();
-    ElementAdd();
+    createCard(popupInputLink.value, popupInputTitle.value);
+    elements.prepend(createCard(popupInputLink.value, popupInputTitle.value));
+    console.log(element);
     closePopup(popupAdd);
 }
 
