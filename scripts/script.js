@@ -102,7 +102,6 @@ initialCards.forEach(function (cards) {
 
 function handleFormAddSubmit(evt) {
     evt.preventDefault();
-    createCard(popupInputLink.value, popupInputTitle.value);
     elements.prepend(createCard(popupInputLink.value, popupInputTitle.value));
     console.log(element);
     closePopup(popupAdd);
