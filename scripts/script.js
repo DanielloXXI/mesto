@@ -20,7 +20,20 @@ const popupPhotoCloseButton = document.querySelector(".popup__close-button_photo
 const popupPhotoImage = document.querySelector(".popup__image");
 const popupPhotoTitle = document.querySelector(".popup__text");
 const popupContainer = document.querySelector(".popup__container");
+const popupSubmitButton = document.querySelector(".popup__submit-button");
+const inactiveButtonClass = document.querySelector(".popup__submit-button_inactive");
+const inputErrorClass = document.querySelector(".popup__input-error");
+const errorClass = document.querySelector(".popup__input-error_visible");
 
+const validationConfig = {
+    formSelector: ".popup__form",
+    inputSelector: ".popup__input",
+    submitButtonSelector: ".popup__submit-button",
+    inactiveButtonClass: "popup__submit-button_inactive",
+    activeButtonClass: "popup__submit-button",
+    inputErrorClass: "popup__input_type-error",
+    errorClass: "popup__input-error_visible"
+};
 
 const initialCards = [
     {
@@ -124,7 +137,6 @@ initialCards.forEach(function (cards) {
 function handleFormAddSubmit(evt) {
     evt.preventDefault();
     elements.prepend(createCard(popupInputLink.value, popupInputTitle.value));
-    console.log(element);
     closePopup(popupAdd);
 }
 
@@ -135,3 +147,5 @@ popupAddButton.addEventListener("click", showPopupAdd);
 popupAddCloseButton.addEventListener("click", () => closePopup(popupAdd));
 popupAddForm.addEventListener('submit', handleFormAddSubmit);
 popupPhotoCloseButton.addEventListener("click", () => closePopup(popupPhoto));
+
+enableValidation(validationConfig);
