@@ -19,6 +19,7 @@ const popupPhoto = document.querySelector(".popup_photo");
 const popupPhotoCloseButton = document.querySelector(".popup__close-button_photo");
 const popupPhotoImage = document.querySelector(".popup__image");
 const popupPhotoTitle = document.querySelector(".popup__text");
+const popupContainer = document.querySelector(".popup__container");
 
 
 const initialCards = [
@@ -48,12 +49,31 @@ const initialCards = [
     }
 ];
 
-function showPopup(popup) {
-    popup.classList.add("popup_opened");
-}
 
 function closePopup(popup) {
     popup.classList.remove("popup_opened");
+}
+
+function closePopupAbroad (popup) {
+    popup.addEventListener("click", (e) => {
+        if (!e.target.closest(".popup *")) {
+            closePopup(popup);
+        }
+    })
+}
+
+function closePopupEscape (popup) {
+    document.addEventListener("keydown", (e)=> {
+       if (e.key == "Escape") {
+        closePopup(popup);
+       } 
+    })
+}
+
+function showPopup(popup) {
+    popup.classList.add("popup_opened");
+    closePopupAbroad (popup);
+    closePopupEscape (popup);
 }
 
 function showPopupEdit() {
@@ -92,6 +112,7 @@ function createCard(link, title) {
         popupPhotoImage.alt = evt.target.alt;
         popupPhotoTitle.textContent = title;
     })
+
     return element;
 }
 
