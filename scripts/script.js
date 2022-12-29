@@ -93,12 +93,14 @@ function showPopupEdit() {
     showPopup(popupEdit);
     popupName.value = profileName.textContent;
     popupDescription.value = profileStatus.textContent;
+    setButtonState(popupEdit);
 }
 
 function showPopupAdd() {
     showPopup(popupAdd);
     popupInputLink.value = null;
     popupInputTitle.value = null;
+    setButtonState(popupAdd);
 }
 
 function handleFormEditSubmit(evt) {

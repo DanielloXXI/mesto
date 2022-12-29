@@ -40,6 +40,14 @@ function toggleButtonState(inputList, buttonElement, config) {
     }
 }
 
+function setButtonState(popup) {
+    const formElement = popup.querySelector(validationConfig.formSelector);
+    const inputList = Array.from(formElement.querySelectorAll(validationConfig.inputSelector));
+    const button = formElement.querySelector(validationConfig.submitButtonSelector);
+    toggleButtonState(inputList, button, validationConfig);
+}
+
+
 function setEventListeners(formElement, config) {
     const inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
     const buttonElement = formElement.querySelector(config.submitButtonSelector);
