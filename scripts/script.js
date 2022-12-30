@@ -94,6 +94,7 @@ function showPopupEdit() {
     popupName.value = profileName.textContent;
     popupDescription.value = profileStatus.textContent;
     setButtonState(popupEdit);
+    setErrorState(popupEdit);
 }
 
 function showPopupAdd() {
