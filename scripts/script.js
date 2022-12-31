@@ -62,31 +62,34 @@ const initialCards = [
     }
 ];
 
+function closeByEscape(evt) {
+    if (evt.key === 'Escape') {
+      const openedPopup = document.querySelector('.popup_opened');
+      closePopup(openedPopup);
+    }
+  }
+
 
 function closePopup(popup) {
     popup.classList.remove("popup_opened");
+    document.removeEventListener('keydown', closeByEscape); 
 }
 
 function closePopupAbroad (popup) {
-    popup.addEventListener("click", (e) => {
+    popup.addEventListener("mousedown", (e) => {
         if (!e.target.closest(".popup *")) {
             closePopup(popup);
         }
     })
 }
 
-function closePopupEscape (popup) {
-    document.addEventListener("keydown", (e)=> {
-       if (e.key == "Escape") {
-        closePopup(popup);
-       } 
-    })
-}
+closePopupAbroad (popupEdit);
+closePopupAbroad (popupAdd);
+closePopupAbroad (popupPhoto);
 
 function showPopup(popup) {
     popup.classList.add("popup_opened");
-    closePopupAbroad (popup);
-    closePopupEscape (popup);
+    document.addEventListener('keydown', closeByEscape); 
 }
 
 function showPopupEdit() {
@@ -99,8 +102,6 @@ function showPopupEdit() {
 
 function showPopupAdd() {
     showPopup(popupAdd);
-    popupInputLink.value = null;
-    popupInputTitle.value = null;
     setButtonState(popupAdd);
 }
 
@@ -114,15 +115,16 @@ function handleFormEditSubmit(evt) {
 function createCard(link, title) {
     const element = elementTemplate.querySelector(".element").cloneNode(true);
     element.querySelector(".element__name").textContent = title;
-    element.querySelector(".element__image").src = link;
-    element.querySelector(".element__image").alt = `фото: ${title}`;
+    const image = element.querySelector(".element__image");
+    image.src = link;
+    image.alt = `фото: ${title}`;
     element.querySelector(".element__like").addEventListener("click", function (evt) {
         evt.target.classList.toggle("element__like_active");
     })
     element.querySelector(".element__delete").addEventListener("click", function (evt) {
-        evt.target.parentElement.remove();
+        evt.target.closest(".element").remove();
     })
-    element.querySelector(".element__image").addEventListener("click", function (evt) {
+    image.addEventListener("click", function (evt) {
         showPopup(popupPhoto);
         popupPhotoImage.src = evt.target.src;
         popupPhotoImage.alt = evt.target.alt;
@@ -141,6 +143,7 @@ function handleFormAddSubmit(evt) {
     evt.preventDefault();
     elements.prepend(createCard(popupInputLink.value, popupInputTitle.value));
     closePopup(popupAdd);
+    evt.target.reset();
 }
 
 popupEditCloseButton.addEventListener("click", () => closePopup(popupEdit));
